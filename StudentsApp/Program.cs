@@ -1,3 +1,4 @@
+using StudentsApp.Configuration;
 using StudentsApp.Core;
 using StudentsApp.DAO;
 
@@ -13,7 +14,7 @@ namespace StudentsApp
             builder.Services.AddRazorPages();
             builder.Services.AddSingleton<DBHelper>();
             builder.Services.AddScoped<IStudentDAO, StudentDAOImpl>();
-
+            builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MapperConfig>());
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
