@@ -1,6 +1,6 @@
 ﻿using StudentsApp.DTO;
 
-namespace StudentsApp.Service;
+namespace StudentsApp.Services;
 
 public interface IStudentService
 {

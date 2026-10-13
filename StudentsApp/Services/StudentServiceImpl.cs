@@ -5,7 +5,7 @@ using StudentsApp.Exceptions;
 using StudentsApp.Models;
 using System.Transactions;
 
-namespace StudentsApp.Service
+namespace StudentsApp.Services
 {
     public class StudentServiceImpl : IStudentService
     {

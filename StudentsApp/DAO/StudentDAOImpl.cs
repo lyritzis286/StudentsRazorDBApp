@@ -78,7 +78,7 @@ namespace StudentsApp.DAO
         {
             Student? studentToReturn = null;
 
-            string sql = "INSERT INTO Students (Firstname, Lastnname) VALUES (@firstname, @lastname); " +
+            string sql = "INSERT INTO Students (Firstname, Lastname) VALUES (@firstname, @lastname); " +
                 "SELECT SCOPE_IDENTITY();";
 
             using SqlConnection connection = _db.GetConnection();
