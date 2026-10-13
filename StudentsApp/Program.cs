@@ -1,3 +1,4 @@
+using Serilog;
 using StudentsApp.Configuration;
 using StudentsApp.Core;
 using StudentsApp.DAO;
@@ -16,6 +17,16 @@ namespace StudentsApp
             builder.Services.AddScoped<IStudentDAO, StudentDAOImpl>();
             builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MapperConfig>());
             var app = builder.Build();
+
+            app.UseSerilogRequestLogging(options =>
+            {
+                options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+                {
+                    diagnosticContext.Set("UserId", httpContext.User?.Identity?.Name);
+                    diagnosticContext.Set("RemoteIP", httpContext.Connection.RemoteIpAddress);
+                };
+            });
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
